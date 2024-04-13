@@ -1,25 +1,37 @@
+import React from 'react';
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import Home from './Pages/Home';
+import Header from './Pages/Header'; 
+import Contact from './Pages/Contact';
+import Postjob from './Pages/Postjob';
+import Login from './Pages/Login';
+import About from './Pages/About';
+import Register from './Pages/Register';
+import Footer from './Pages/Footer';
+import Job from './Pages/job';
+import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
+
+  
+
 function App() {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    fetch('https://swapi.dev/api/people/')
-      .then(response => response.json())
-      .then(data => setCharacters(data.results))
-      .catch(error => console.log(error));
-  }, []);
-
   return (
-    <div className="App">
-      <h1>Characters</h1>
-      <ul>
-        {characters.map((character, index) => (
-          <li key={index}>{character.name}</li>
-        ))}
-      </ul>
-    </div>
+    <div>
+    <Router>
+
+    <Routes>
+      <Route path="/" element={<Header />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/postjob" element={<Postjob />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/footer" element={<Footer />} />
+      <Route path="/job" element={<Job />} />
+      
+    </Routes>
+    </Router>
+	  </div>
   );
 }
-
 export default App;
